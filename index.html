@@ -74,7 +74,11 @@
       var title = document.querySelector("#search-title");
 
       if (window.location.hash) {
-        return yo();
+        var hash = window.location.hash.substring(1);
+        if (title && hash) {
+          title.value = decodeURIComponent(hash);
+          return parse();
+        };
       };
 
       if (search) {
@@ -100,13 +104,16 @@
             if (exec && exec[2]) {
               yohoho.dataset.kinopoisk = exec[2];
               window.location.hash = "#" + yohoho.dataset.kinopoisk;
+              document.title = "КиноПоиск: " + yohoho.dataset.kinopoisk;
             };
           } else if (/^\d+$/.test(title.value)) {
             yohoho.dataset.kinopoisk = title.value;
             window.location.hash = "#" + yohoho.dataset.kinopoisk;
+            document.title = "КиноПоиск: " + yohoho.dataset.kinopoisk;
           } else {
             yohoho.dataset.title = encodeURIComponent(title.value);
             window.location.hash = "#" + yohoho.dataset.title;
+            document.title = title.value;
           };
           items = [];
         };
@@ -114,7 +121,8 @@
     });
 
     window.addEventListener("hashchange", (e) => {
-      window.location.reload();
+      console.log({ "hashchange": window.location.hash });
+      return yo();
     });
   </script>
 
