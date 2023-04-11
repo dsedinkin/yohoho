@@ -75,10 +75,7 @@
 
       if (window.location.hash) {
         var hash = window.location.hash.substring(1);
-        if (title && hash) {
-          title.value = decodeURIComponent(hash);
-          return yo();
-        };
+        return yo();
       };
 
       if (search) {
