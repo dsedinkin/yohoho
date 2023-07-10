@@ -124,9 +124,7 @@
     });
 
     window.addEventListener("hashchange", (e) => {
-      console.log({ "hashchange": window.location.hash });
-      var title = document.querySelector("#search-title");
-      return parse(title);
+      window.location.reload(true);
     });
   </script>
 
