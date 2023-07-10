@@ -69,7 +69,7 @@
     });
   </script>
   <script>
-    const parse = () => {
+    const parse = (title) => {
       var yohoho = document.querySelector("#yohoho");
       if (title && title.value && yohoho) {
         if (/kinopoisk\.ru/i.test(title.value)) {
@@ -91,7 +91,7 @@
         items = [];
       };
     };
-    
+
     document.addEventListener("DOMContentLoaded", () => {
       var search = document.querySelector("#search");
       var title = document.querySelector("#search-title");
@@ -100,13 +100,13 @@
         var hash = window.location.hash.substring(1);
         if (title && hash) {
           title.value = decodeURIComponent(hash);
-          return parse();
+          return parse(title);
         };
       };
 
       if (search) {
         search.addEventListener("click", () => {
-          return parse();
+          return parse(title);
         });
       };
 
@@ -114,7 +114,7 @@
         title.addEventListener("keyup", (event) => {
           event.preventDefault();
           if (event.keyCode === 13) {
-            return parse();
+            return parse(title);
           };
         });
       };
