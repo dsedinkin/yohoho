@@ -78,15 +78,18 @@
             yohoho.dataset.kinopoisk = exec[2];
             window.location.hash = "#" + yohoho.dataset.kinopoisk;
             document.title = "КиноПоиск: " + yohoho.dataset.kinopoisk;
+            yo();
           };
         } else if (/^\d+$/.test(title.value)) {
           yohoho.dataset.kinopoisk = title.value;
           window.location.hash = "#" + yohoho.dataset.kinopoisk;
           document.title = "КиноПоиск: " + yohoho.dataset.kinopoisk;
+          yo();
         } else {
           yohoho.dataset.title = encodeURIComponent(title.value);
           window.location.hash = "#" + yohoho.dataset.title;
           document.title = title.value;
+          yo();
         };
         items = [];
       };
@@ -122,7 +125,7 @@
 
     window.addEventListener("hashchange", (e) => {
       console.log({ "hashchange": window.location.hash });
-      return yo();
+      return parse();
     });
   </script>
 
